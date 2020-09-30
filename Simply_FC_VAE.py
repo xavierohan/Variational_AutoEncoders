@@ -4,8 +4,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from registry import register
 
-
-# Sample z using mu and log_var
+# Code based on https://debuggercafe.com/getting-started-with-variational-autoencoder-using-pytorch/
+# Sample z using mu and log_var 
 
 def sampling_from_latent_params(mu, log_var):
     std = torch.exp(0.5 * log_var)
