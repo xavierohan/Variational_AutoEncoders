@@ -1,3 +1,4 @@
+# Code from https://github.com/huangsicong/codebase_template/blob/master/codebase/models/registry.py
 
 _MODEL = dict()
 
