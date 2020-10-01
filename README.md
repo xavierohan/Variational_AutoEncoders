@@ -35,3 +35,4 @@ To train the Simply_FC_VAE model on the MNIST dataset with number of epochs = 20
 ```
 python3 main.py -d 0 -m 0 -t 1 -r 0.001 -e 20 -z 16
 ```
+Reconstruction results will be saved under Results.png
