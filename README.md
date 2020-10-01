@@ -14,7 +14,7 @@
 
 -- FashionMNIST
 
-### Pre-trained Models can be downloaded from ( Add them to the folder containing main.py ) - [Pre-trained Models] (https://drive.google.com/drive/folders/1Nk3xpGvYcnHxkO7p8PRHpRmUvVhFjeDV?)
+### Pre-trained Models can be downloaded from ( Add them to the folder containing main.py ) - [Pre-trained Models](https://drive.google.com/drive/folders/1Nk3xpGvYcnHxkO7p8PRHpRmUvVhFjeDV?)
 P.S. The pre-trained models are only trained upto a few epochs. 
 
 ## To Run From Your Terminal
