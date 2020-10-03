@@ -6,7 +6,7 @@
 
 -- Simply Fully Connected VAE
 
--- DCGAN based VAE
+-- DCGAN based VAE ( Based on the implementation of the Likelihood regret: an out-of-distribution detection score for variational auto-encoder )
 
 ### These models are trained on the following datasets:
 
