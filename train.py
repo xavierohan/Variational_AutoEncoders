@@ -18,7 +18,8 @@ def train_model(c, model, train_loader, lr, epochs, dim=32):
     model.train()
     optimizer = optim.Adam(model.parameters(), lr=lr)
 
-    if c == 1:
+    if c == 1: 
+        # c==1 --> DCGAN based VAE
         for epoch in range(epochs):
             running_loss = 0.0
             for i, (data, _) in enumerate(train_loader):
@@ -31,7 +32,8 @@ def train_model(c, model, train_loader, lr, epochs, dim=32):
                 optimizer.step()
         print('###### Epoch: {} Average loss: {:.4f}'.format(epoch, running_loss / len(train_loader.dataset)))
 
-    elif c == 0:
+    elif c == 0: 
+        # c==0 --> Simply FC VAE
         for epoch in range(epochs):
             running_loss = 0.0
             for i, (data, _) in enumerate(train_loader):
