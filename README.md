@@ -10,9 +10,9 @@
 
 -- MyDCGAN based VAE ( Based on the above model, but with slight alterations )
 ```
-    - Final conv2d layer in decoder is replaced by ConvTranspose2d  
-    - Padding = 1 added to all but first ConvTranspose2d layer in the decoder
-    - out_channels of final layer = 1, to get 1x32x32 output
+- Final conv2d layer in decoder is replaced by ConvTranspose2d  
+- Padding = 1 added to all but first ConvTranspose2d layer in the decoder
+- out_channels of final layer = 1, to get 1x32x32 output
 ```
     
 
