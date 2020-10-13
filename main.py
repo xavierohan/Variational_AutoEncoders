@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser(description='Simply_FC_VAE , DCGAN_based_VAE ')
 parser.add_argument('-d', '--data', type=int, required=True, help='0: MNIST, 1: FashionMNIST', default=0)
-parser.add_argument('-m', '--model', type=int, required=True, help='0: Simply_FC_VAE, 1: DCGAN_based_VAE', default=0)
+parser.add_argument('-m', '--model', type=int, required=True, help='0: Simply_FC_VAE, 1: DCGAN_based_VAE, 2: My_DCGAN_based_VAE', default=0)
 parser.add_argument('-t', '--train', type=int, required=True, help='0: Load pre-trained model, 1: train', default=1)
 parser.add_argument('-r', '--lr', type=float, required=True, help='Enter lr', default=0.001)
 parser.add_argument('-e', '--epochs', type=int, required=True, help='Enter epochs', default=1)
@@ -43,6 +43,11 @@ elif args["model"] == 1:
         data = data.reshape(-1, 1, 32,  32)
     model = DCGANvae()  # z_dim is fixed to 100
     c = 1
+elif args["model"] == 2:
+    for i, (data, _) in enumerate(train_loader):
+        data = data.reshape(-1, 1, 32,  32)
+    model = MyDCGANvae()  # z_dim is fixed to 100
+    c = 1
 # c acts as a flag to help in data pre-processing in train_model
 
 if args["train"] == 1:
@@ -71,6 +76,8 @@ elif args["train"] == 0:
         elif args["model"] == 0:
             model = torch.load('Simply_FC_VAE_pretrained(MNIST).pt')
             model.eval()
+            
+    # will add pretrained model for MyDCGAN_based_VAE soon.
 
     # Visualize Training and Reconstructed images
 
