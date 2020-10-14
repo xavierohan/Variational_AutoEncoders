@@ -3,7 +3,7 @@ from torchvision import datasets
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from Simply_FC_VAE import sfcVAE
-from DCGAN_based_VAE import DCGANvae
+from My_DCGAN_based_VAE import MyDCGANvae
 from train import train_model, Lvae
 import argparse
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser(description='Simply_FC_VAE , DCGAN_based_VAE ')
 parser.add_argument('-d', '--data', type=int, required=True, help='0: MNIST, 1: FashionMNIST', default=0)
-parser.add_argument('-m', '--model', type=int, required=True, help='0: Simply_FC_VAE, 1: DCGAN_based_VAE, 2: My_DCGAN_based_VAE', default=0)
+parser.add_argument('-m', '--model', type=int, required=True, help='0: Simply_FC_VAE, 1: My_DCGAN_based_VAE', default=0)
 parser.add_argument('-t', '--train', type=int, required=True, help='0: Load pre-trained model, 1: train', default=1)
 parser.add_argument('-r', '--lr', type=float, required=True, help='Enter lr', default=0.001)
 parser.add_argument('-e', '--epochs', type=int, required=True, help='Enter epochs', default=1)
@@ -38,12 +38,8 @@ if args["model"] == 0:
         data = data.reshape(-1, 32 * 32)
     model = sfcVAE(z_dim)
     c = 0
+
 elif args["model"] == 1:
-    for i, (data, _) in enumerate(train_loader):
-        data = data.reshape(-1, 1, 32,  32)
-    model = DCGANvae()  # z_dim is fixed to 100
-    c = 1
-elif args["model"] == 2:
     for i, (data, _) in enumerate(train_loader):
         data = data.reshape(-1, 1, 32,  32)
     model = MyDCGANvae()  # z_dim is fixed to 100
@@ -62,10 +58,10 @@ elif args["train"] == 0:
     if args["model"] == 1:
         print("Loading Pre-trained DCGAV VAE, Find results at Results.png")
         if args["data"] == 1:
-            model = torch.load('DCGAN_VAE_pretrained(FMNIST).pt')
+            model = torch.load('DCGAN_VAE_pretrained(FMNIST).pt') # change file
             model.eval()
         elif args["data"] == 0:
-            model = torch.load('DCGAN_VAE_pretrained(MNIST).pt')
+            model = torch.load('DCGAN_VAE_pretrained(MNIST).pt') # change file
             model.eval()
 
     elif args["model"] == 0:
