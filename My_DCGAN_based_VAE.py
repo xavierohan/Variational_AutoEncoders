@@ -70,11 +70,6 @@ class MyDCGANvae(nn.Module):
             nn.Flatten()
         )
 
-    def sampling_from_latent_params(self, mu, log_var):
-        std = torch.exp(0.5 * log_var)
-        eps = torch.randn_like(std)
-        sample = mu + (eps * std)
-        return sample
 
     def forward(self, x):
         x = self.encoder(x)
@@ -82,7 +77,7 @@ class MyDCGANvae(nn.Module):
         mu = self.enc_to_mu(x)
         log_var = self.enc_to_log_var(x)
 
-        latent_z = self.sampling_from_latent_params(mu, log_var)
+        latent_z = sampling_from_latent_params(mu, log_var)
 
         x = F.relu(latent_z)
         x = x.view(-1, 100, 1, 1)
